@@ -17,9 +17,7 @@ public class DataBaseConfig {
 		logger.info("Create DB connection");
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		return DriverManager.getConnection(
-				"jdbc:mysql://localhost:3306/prod?useUnicode=true"
-						+ "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&"
-						+ "serverTimezone=UTC",
+				"jdbc:mysql://localhost:3306/prod?serverTimezone=UTC",
 				"root", "rootroot");
 	}
 

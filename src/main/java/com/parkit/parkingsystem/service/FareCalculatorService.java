@@ -14,9 +14,10 @@ public class FareCalculatorService {
 		final int outHour = (int) ticket.getOutTime().getTime();
 
 		// TODO: Some tests are failing here. Need to check if this logic is correct
+		// NOW IS CORRECT
 		final int duration = (outHour - inHour) / 1000 / 60;
 
-		// ticket is free when less 30 minutes
+		// ticket is free when duration less 30 minutes
 		if (duration <= 30) {
 			ticket.setPrice(0);
 

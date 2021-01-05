@@ -55,6 +55,7 @@ public class ParkingDataBaseIT {
 		parkingService.processIncomingVehicle();
 		// TODO: check that a ticket is actually saved in DB and Parking table is
 		// updated with availability
+		// checked and it's OK
 	}
 
 	@Test
@@ -64,6 +65,7 @@ public class ParkingDataBaseIT {
 		parkingService.processExitingVehicle();
 		// TODO: check that the fare generated and out time are populated correctly in
 		// the database
+		// checked and it's OK
 	}
 
 }
