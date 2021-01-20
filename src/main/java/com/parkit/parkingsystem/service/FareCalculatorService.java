@@ -1,9 +1,12 @@
 package com.parkit.parkingsystem.service;
 
 import com.parkit.parkingsystem.constants.Fare;
+import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.model.Ticket;
 
 public class FareCalculatorService {
+
+	private static TicketDAO ticketDAO = new TicketDAO();
 
 	public void calculateFare(Ticket ticket) {
 		if (ticket.getOutTime() == null || ticket.getOutTime().before(ticket.getInTime())) {
@@ -38,5 +41,12 @@ public class FareCalculatorService {
 			}
 		}
 
+// Si le véhicule a déja été dans le parking au moins une fois pour
+// appliquer la remise 5%
+
+		final Ticket existingTicket = ticketDAO.getTicket(ticket.getVehicleRegNumber());
+		if (existingTicket != null) {
+			ticket.setPrice(ticket.getPrice() - ticket.getPrice() * 0.05);
+		}
 	}
 }
