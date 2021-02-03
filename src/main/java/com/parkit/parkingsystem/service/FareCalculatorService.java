@@ -46,8 +46,6 @@ public class FareCalculatorService {
 // appliquer la remise 5%
 
 		final Ticket existingTicket = ticketDAO.getTicket(ticket.getVehicleRegNumber());
-
-		System.out.println(existingTicket);
 		if (existingTicket != null) {
 
 			ticket.setPrice(ticket.getPrice() - ticket.getPrice() * 0.05);

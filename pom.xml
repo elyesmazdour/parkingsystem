@@ -183,7 +183,7 @@
 				<version>4.1.3</version>
 				<configuration>
 					<xmlOutput>true</xmlOutput>
-					<xmlOutputDirectory>target/site</xmlOutputDirectory>
+					<xmlOutputDirectory>target/my-report</xmlOutputDirectory>
 				</configuration>
 			</plugin>
 			<plugin>
