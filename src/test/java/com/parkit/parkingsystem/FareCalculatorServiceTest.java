@@ -197,18 +197,29 @@ public class FareCalculatorServiceTest {
 		inTime.setTime(System.currentTimeMillis() - 60 * 60 * 1000);
 		final Date outTime = new Date();
 		final ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
-		final TicketDAO ticketDao = new TicketDAO();
-		ticketDao.dataBaseConfig = new DataBaseTestConfig();
 
 		ticket.setInTime(inTime);
 		ticket.setOutTime(outTime);
 		ticket.setParkingSpot(parkingSpot);
 		ticket.setVehicleRegNumber("ABCDEF");
-
-		ticketDao.saveTicket(ticket);
-		ticketDao.updateTicket(ticket);
-
 		fareCalculatorService.calculateFare(ticket);
+
+//		final Date inTime = new Date();
+//		inTime.setTime(System.currentTimeMillis() - 60 * 60 * 1000);
+//		final Date outTime = new Date();
+//		final ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
+		// final TicketDAO ticketDAO = new TicketDAO();
+		// ticketDAO.dataBaseConfig = new DataBaseTestConfig();
+//
+//		ticket.setInTime(inTime);
+//		ticket.setOutTime(outTime);
+//		ticket.setParkingSpot(parkingSpot);
+//		ticket.setVehicleRegNumber("ABCDEF");
+//
+		// ticketDAO.saveTicket(ticket);
+		// ticketDAO.updateTicket(ticket);
+//
+//		fareCalculatorService.calculateFare(ticket);
 		assertEquals(Fare.CAR_RATE_PER_HOUR - Fare.CAR_RATE_PER_HOUR * 0.05, ticket.getPrice());
 	}
 
@@ -219,16 +230,16 @@ public class FareCalculatorServiceTest {
 		inTime.setTime(System.currentTimeMillis() - 60 * 60 * 1000);
 		final Date outTime = new Date();
 		final ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
-		final TicketDAO ticketDao = new TicketDAO();
-		ticketDao.dataBaseConfig = new DataBaseTestConfig();
+		final TicketDAO ticketDAO = new TicketDAO();
+		ticketDAO.dataBaseConfig = new DataBaseTestConfig();
 
 		ticket.setInTime(inTime);
 		ticket.setOutTime(outTime);
 		ticket.setParkingSpot(parkingSpot);
 		ticket.setVehicleRegNumber("ABCDEF");
 
-		ticketDao.saveTicket(ticket);
-		ticketDao.updateTicket(ticket);
+		ticketDAO.saveTicket(ticket);
+		ticketDAO.updateTicket(ticket);
 
 		fareCalculatorService.calculateFare(ticket);
 		assertEquals(Fare.BIKE_RATE_PER_HOUR - Fare.BIKE_RATE_PER_HOUR * 0.05, ticket.getPrice());

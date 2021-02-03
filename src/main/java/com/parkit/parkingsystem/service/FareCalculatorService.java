@@ -6,7 +6,8 @@ import com.parkit.parkingsystem.model.Ticket;
 
 public class FareCalculatorService {
 
-	private static TicketDAO ticketDAO = new TicketDAO();
+	// public DataBaseConfig dataBaseConfig = new DataBaseConfig();
+	private final TicketDAO ticketDAO = new TicketDAO();
 
 	public void calculateFare(Ticket ticket) {
 		if (ticket.getOutTime() == null || ticket.getOutTime().before(ticket.getInTime())) {
@@ -45,7 +46,10 @@ public class FareCalculatorService {
 // appliquer la remise 5%
 
 		final Ticket existingTicket = ticketDAO.getTicket(ticket.getVehicleRegNumber());
+
+		System.out.println(existingTicket);
 		if (existingTicket != null) {
+
 			ticket.setPrice(ticket.getPrice() - ticket.getPrice() * 0.05);
 		}
 	}
